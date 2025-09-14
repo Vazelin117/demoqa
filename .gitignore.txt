@@ -1,0 +1,24 @@
+# Виртуальное окружение
+venv/
+.env/
+env/
+.venv/
+
+# Кеш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Файлы настроек IDE, например, PyCharm
+.idea/
+.vscode/
+
+# Логи и базы данных
+*.log
+*.sqlite3
+
+# Файлы с чувствительными данными (пароли, ключи API)
+secrets.py
+config.py
+.env
+*.env
