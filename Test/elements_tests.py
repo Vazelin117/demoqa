@@ -6,7 +6,6 @@ from conftests import driver
 def test_open_checkbox_page(driver):
     page = StartPage(driver)
     page.open()
-    page.click(StartPage.CHECKBOXES)
     time.sleep(3600)
 
 

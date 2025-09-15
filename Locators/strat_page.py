@@ -6,4 +6,4 @@ class StartPageLocators:
     ALERTS = (By.XPATH, "//h5[contains(text(), 'Alerts')]")
     WIDGETS = (By.XPATH, "//h5[contains(text(), 'Widgets')]")
     INTERACTIONS = (By.XPATH, "//h5[contains(text(), 'Interactions')]")
-    BOOK_STORES = (By.XPATH, "//h5[contains(text(), 'Book Store Application')]")
+    BOOK_STORE = (By.XPATH, "//h5[contains(text(), 'Book Store Application')]")
