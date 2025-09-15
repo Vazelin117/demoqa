@@ -1,12 +1,12 @@
 from selenium.webdriver.common.by import By
-from .BasePage import BasePage
+from .base_page import BasePage
 
 class StartPage(BasePage):
-    CHECKBOXES = (By.ID, 'checkboxes')
-    DROPDOWN = (By.ID, 'dropdown')
+    CHECKBOXES = (By.LINK_TEXT, 'Checkboxes')
+    DROPDOWN = (By.LINK_TEXT, 'Dropdown')
 
     def __init__(self, driver):
-        super().__init__(driver, "https://the-internet.herokuapp.com/")
+        super().__init__(driver, "https://demoqa.com/")
         self.driver = driver
 
     def open(self):
