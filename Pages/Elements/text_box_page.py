@@ -1,3 +1,4 @@
+from Generator.generator import generate_person
 from Locators.Elements.text_box_locators import TextBoxLocators
 from Pages.base_page import BasePage
 
@@ -5,10 +6,11 @@ from Pages.base_page import BasePage
 class TextBoxPage(BasePage):
     locators = TextBoxLocators()
 
-    full_name = "Иван иванов"
-    email = "Vazelin117@gmail.com"
-    current_address = "д. Нижние подзалупки, ул. какая-то, д.2"
-    permanent_address = current_address
+    person_info = next(generate_person())
+    full_name = person_info.full_name
+    email = person_info.email
+    current_address = person_info.current_address.replace('\n', ' ')
+    permanent_address = person_info.permanent_address.replace('\n', ' ')
 
     def fill_all_fields(self):
         self.is_element_visible(self.locators.FULL_NAME).send_keys(self.full_name)
@@ -18,9 +20,17 @@ class TextBoxPage(BasePage):
         self.click(self.locators.SUBMIT)
 
     def get_filled_text(self):
-        filled_full_name = self.is_element_visible(self.locators.FILLED_NAME).text
-        filled_email = self.is_element_visible(self.locators.FILLED_EMAIL).text
-        filled_current_address = self.is_element_visible(self.locators.FILLED_CURRENT_ADDRESS).text
-        filled_permanent_address = self.is_element_visible(self.locators.FILLED_PERMANENT_ADDRESS).text
+        filled_full_name = self.is_element_visible(
+            self.locators.FILLED_NAME).text.split(":")[1]
+
+        filled_email = self.is_element_visible(
+            self.locators.FILLED_EMAIL).text.split(":")[1]
+
+        filled_current_address = self.is_element_visible(
+            self.locators.FILLED_CURRENT_ADDRESS).get_attribute("innerText").split(":")[1]
+
+        filled_permanent_address = self.is_element_visible(
+            self.locators.FILLED_PERMANENT_ADDRESS).get_attribute("innerText").split(":")[1]
+
         return filled_full_name, filled_email, filled_current_address, filled_permanent_address
 
