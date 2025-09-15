@@ -7,5 +7,3 @@ class StartPage(BasePage):
         super().__init__(driver, "https://demoqa.com/")
         self.driver = driver
 
-    def open(self):
-        self.driver.get(self.url)
