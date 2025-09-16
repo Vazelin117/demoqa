@@ -4,13 +4,20 @@ from Pages.base_page import BasePage
 
 
 class TextBoxPage(BasePage):
+
+    def __init__(self, driver):
+        super().__init__(driver, "https://demoqa.com/text-box")
+        self.driver = driver
+
     locators = TextBoxLocators()
 
-    person_info = next(generate_person())
+    person_info = next(generate_person()) #next дает лишь одну итерацию от generate_person()
     full_name = person_info.full_name
     email = person_info.email
     current_address = person_info.current_address.replace('\n', ' ')
     permanent_address = person_info.permanent_address.replace('\n', ' ')
+
+
 
     def fill_all_fields(self):
         self.is_element_visible(self.locators.FULL_NAME).send_keys(self.full_name)

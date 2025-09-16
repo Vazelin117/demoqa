@@ -1,6 +1,12 @@
 from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+try:
+    from selenium.webdriver import Chrome as WebDriver
+except ImportError:
+    from selenium import webdriver
+    WebDriver = webdriver.Chrome
 
 class BasePage:
     def __init__(self, driver: WebDriver, url: str):

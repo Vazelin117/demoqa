@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class ElementsStartPageLocators:
+
+    #Elements
     TEXT_BOX = (By.XPATH, '//span[contains(text(), "Text Box")]')
     CHECK_BOX = (By.XPATH, '//span[contains(text(), "Check Box")]')
     RADIO_BUTTON = (By.XPATH, '//span[contains(text(), "Radio Button")]')

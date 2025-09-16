@@ -1,5 +1,5 @@
-from selenium.webdriver.common.by import By
-from .base_page import BasePage
+from Pages.base_page import BasePage
+
 
 class StartPage(BasePage):
 
@@ -7,3 +7,7 @@ class StartPage(BasePage):
         super().__init__(driver, "https://demoqa.com/")
         self.driver = driver
 
+
+    def get_text(self, locator):
+        text = self.driver.find_element(*locator).text
+        return text
