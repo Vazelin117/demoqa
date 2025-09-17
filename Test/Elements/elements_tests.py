@@ -2,7 +2,7 @@ import time
 from Pages.Elements.text_box_page import TextBoxPage
 from conftests import driver
 
-#тест на наличие/отсутствие плейсхолдера
+#Написать тест на наличие/отсутствие плейсхолдера
 
 class TestElements:
 

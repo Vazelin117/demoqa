@@ -13,23 +13,14 @@ class CheckBoxPage(BasePage):
 
     def expand_all_buttons_manually(self):
         find_locator = CheckBoxLocators()
-        self.click(find_locator.expand_collapse_btns(1))
-        self.click(find_locator.expand_collapse_btns(2))
-        self.click(find_locator.expand_collapse_btns(3))
-        self.click(find_locator.expand_collapse_btns(4))
-        self.click(find_locator.expand_collapse_btns(5))
-        self.click(find_locator.expand_collapse_btns(6))
+        for i in range(1, 7):
+            self.click(find_locator.expand_collapse_btns(i))
 
     def collapse_all_buttons_manually(self):
         find_locator = CheckBoxLocators()
         self.expand_all_buttons_manually()
-
-        self.click(find_locator.expand_collapse_btns(6))
-        self.click(find_locator.expand_collapse_btns(5))
-        self.click(find_locator.expand_collapse_btns(4))
-        self.click(find_locator.expand_collapse_btns(3))
-        self.click(find_locator.expand_collapse_btns(2))
-        self.click(find_locator.expand_collapse_btns(1))
+        for i in range(6, 0, -1):
+            self.click(find_locator.expand_collapse_btns(i))
 
 
 

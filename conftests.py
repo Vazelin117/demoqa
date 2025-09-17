@@ -12,7 +12,7 @@ def kill_chromedriver_processes():
 @pytest.fixture(scope="function")
 def driver():
 
-    service = Service(executable_path=r"C:/Users/Vazelin/Desktop/chromedriver-win64/chromedriver.exe")
+    service = Service(executable_path=r"C:/Users/vazel/OneDrive/Рабочий стол/chromedriver-win64/chromedriver.exe")
     driver = webdriver.Chrome(service=service)
     driver.maximize_window()
     yield driver
