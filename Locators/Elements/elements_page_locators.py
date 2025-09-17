@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class ElementsStartPageLocators:
+class ElementsPageLocators:
 
     #Elements
     TEXT_BOX = (By.XPATH, '//span[contains(text(), "Text Box")]')
