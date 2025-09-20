@@ -20,5 +20,6 @@ __pycache__/
 # Файлы с чувствительными данными (пароли, ключи API)
 secrets.py
 config.py
+conftests.py
 .env
 *.env
