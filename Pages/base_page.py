@@ -21,11 +21,16 @@ class BasePage:
         return self.wait.until(EC.presence_of_element_located(locator),
                                message=f"Element {locator} not found")
 
+    def find_elements(self, locator):
+        return self.wait.until(EC.presence_of_all_elements_located(locator))
+
     def is_element_selected(self, locator):
-        return self.wait.until(EC.element_to_be_selected(locator))
+        return self.wait.until(EC.element_to_be_selected(locator),
+                               message=f"Element {locator} not found")
 
     def is_element_visible(self, locator):
-        return self.wait.until(EC.visibility_of_element_located(locator))
+        return self.wait.until(EC.visibility_of_element_located(locator),
+                               message=f"Element {locator} not found")
 
     def click(self, locator):
         self.wait.until(EC.presence_of_element_located(locator),

@@ -1,5 +1,6 @@
 import time
 from Pages.Elements.check_box_page import CheckBoxPage
+from Data.Elements.check_box_data import CheckBoxData
 from conftests import driver
 
 
@@ -7,19 +8,20 @@ class TestCheckBoxPage:
 
     class TestToggles:
         def test_expand_all_toggles(self, driver):
+            assert_data = CheckBoxData()
             checkbox_page = CheckBoxPage(driver)
             checkbox_page.open()
 
             checkbox_page.expand_all_buttons_manually()
-
-            time.sleep(5)
+            assert checkbox_page.get_all_nesting_texts() == assert_data.EXPAND_DATA
 
         def test_collapse_toggles(self, driver):
+            assert_data = CheckBoxData()
             checkbox_page = CheckBoxPage(driver)
             checkbox_page.open()
 
+            checkbox_page.expand_all_buttons_manually()
             checkbox_page.collapse_all_buttons_manually()
-
-            time.sleep(5)
+            assert checkbox_page.get_all_nesting_texts() != assert_data.EXPAND_DATA
 
 
