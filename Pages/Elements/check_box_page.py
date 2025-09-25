@@ -47,11 +47,14 @@ class CheckBoxPage(BasePage):
 
 
 
-    def expand_all(self):
-        return
+    def expand_all_btn(self):
+        find_locator = CheckBoxLocators()
+        self.click(find_locator.EXPAND_ALL_BTN)
 
-    def collapse_all(self):
-        return
+    def collapse_all_btn(self):
+        find_locator = CheckBoxLocators()
+        self.expand_all_btn()
+        self.click(find_locator.COLLAPSE_ALL_BTN)
 
     def select_all_checkboxes(self):
         return
