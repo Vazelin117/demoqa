@@ -3,7 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 try:
-    from selenium.webdriver import Chrome as WebDriver
+    from selenium.webdriver import Chrome as WebDriver, ActionChains
 except ImportError:
     from selenium import webdriver
     WebDriver = webdriver.Chrome
@@ -32,6 +32,10 @@ class BasePage:
         return self.wait.until(EC.visibility_of_element_located(locator),
                                message=f"Element {locator} not found")
 
+    def is_elements_visible(self, locator):
+        return self.wait.until(EC.visibility_of_all_elements_located(locator),
+                               message=f"Element {locator} not found")
+
     def click(self, locator):
         self.wait.until(EC.presence_of_element_located(locator),
                         message=f"Element {locator} not found").click()
@@ -44,5 +48,13 @@ class BasePage:
     def get_text(self, locator):
         element = self.find_element(locator).text
         return element
+
+    def get_texts(self, locator):
+        elements = self.find_elements(locator)
+        return elements
+
+    def go_to_element(self, element):
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
 
 

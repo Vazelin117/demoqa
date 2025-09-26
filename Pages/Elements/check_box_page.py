@@ -1,9 +1,8 @@
-from selenium.common import NoSuchElementException
+import random
 
 from Data.Elements.check_box_data import CheckBoxData
 from Locators.Elements.check_box_locators import CheckBoxLocators
 from Pages.base_page import BasePage
-from selenium.webdriver.common.by import By
 
 
 class CheckBoxPage(BasePage):
@@ -44,19 +43,27 @@ class CheckBoxPage(BasePage):
         text_count = len(self.find_elements(find_locator.NESTING_TEXT))
         return text_count
 
-
-
-
+    #Развернуть все тогглы одной кнопкой
     def expand_all_btn(self):
         find_locator = CheckBoxLocators()
         self.click(find_locator.EXPAND_ALL_BTN)
 
+    #Свернуть все тогглы одной кнопкой
     def collapse_all_btn(self):
         find_locator = CheckBoxLocators()
         self.expand_all_btn()
         self.click(find_locator.COLLAPSE_ALL_BTN)
 
-    def select_all_checkboxes(self):
-        return
+    def click_random_checkbox(self):
+        self.expand_all_btn()
+        item_list = self.is_elements_visible(self.locators.VISIBLE_ITEMS)
+        count = len(item_list)
+        while count != 0:
+            item = item_list[random.randint(0, len(item_list) - 1)]
+            item.click()
+            count -= 1
+        #А теперь вытянуть значения из чекбокса и сравнить с текстом снизу
+
+
 
 

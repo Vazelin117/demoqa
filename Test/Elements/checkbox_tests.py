@@ -39,3 +39,12 @@ class TestCheckBoxPage:
 
             checkbox_page.collapse_all_btn()
             assert checkbox_page.get_all_nesting_texts() != assert_data.EXPAND_DATA
+
+        class TestCheckboxes:
+
+            def test_select_checkboxes(self, driver):
+                checkbox_page = CheckBoxPage(driver)
+                checkbox_page.open()
+
+                checkbox_page.click_random_checkbox()
+                time.sleep(5)
