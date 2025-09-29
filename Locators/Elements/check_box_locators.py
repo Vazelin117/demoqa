@@ -15,6 +15,9 @@ class CheckBoxLocators:
     HALF_CHECKED_CHECKBOXES = (By.XPATH, '//span[@class="rct-text"]//*[@class="rct-icon rct-icon-half-check"]')
     UNCHECKED_CHECKBOXES = (By.XPATH, '//span[@class="rct-text"]//*[@class="rct-icon rct-icon-uncheck"]')
 
+    CHECKED_CHECKBOXES_TEXT = (By.XPATH, '//span[@class="rct-text"]//*[@class="rct-icon rct-icon-check"]/../..//span[@class="rct-title"]')
+    CHECKED_ASSERTED_TEXT = (By.XPATH, '//span[@class="text-success"]')
+
     def expand_collapse_btns(self, btn_num):
         locator_type, locator_value = self.EXPAND_COLLAPSE_BTN
         final_locator = (locator_type, f"({locator_value})[{btn_num}]")
@@ -30,6 +33,7 @@ class CheckBoxLocators:
         locator_type, locator_value = self.NESTING_TEXT
         final_locator = (locator_type, f'({locator_value})[{nest_num}]')
         return final_locator
+
 
 
 

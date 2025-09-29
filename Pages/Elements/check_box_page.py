@@ -54,6 +54,7 @@ class CheckBoxPage(BasePage):
         self.expand_all_btn()
         self.click(find_locator.COLLAPSE_ALL_BTN)
 
+    #Прокликать рандомные чекбоксы
     def click_random_checkbox(self):
         self.expand_all_btn()
         item_list = self.is_elements_visible(self.locators.VISIBLE_ITEMS)
@@ -62,7 +63,25 @@ class CheckBoxPage(BasePage):
             item = item_list[random.randint(0, len(item_list) - 1)]
             item.click()
             count -= 1
-        #А теперь вытянуть значения из чекбокса и сравнить с текстом снизу
+
+
+    #Вытянуть значения из выбранного чекбокса и сравнить с текстом снизу
+    def get_selected_checkboxes_value(self):
+        checked_list = self.is_elements_visible(self.locators.CHECKED_CHECKBOXES_TEXT)
+        asserted_data = []
+        for i in checked_list:
+            asserted_data.append(i.text.lower().replace(" ", "").split('.')[0])
+
+        return asserted_data
+
+    #Получить тексты снизу для выбранных элементов
+    def get_selected_data(self):
+        checked_list = self.is_elements_visible(self.locators.CHECKED_ASSERTED_TEXT)
+        asserted_data = []
+        for i in checked_list:
+            asserted_data.append(i.text.lower())
+
+        return asserted_data
 
 
 
